@@ -7,17 +7,17 @@
 <table class="table table-dark">
 
     <tr>
-        <th colspan="7">Students</th>
+        <th class="d-flex justify-content-center row-cols-1">Students</th>
     </tr>
 
     <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Course</td>
-        <td>Admission Date</td>
-        <td></td>
-        <td></td>
+        <td class="bg-warning border-1 border-light">Id</td>
+        <td class="bg-warning border-1 border-light">Name</td>
+        <td class="bg-warning border-1 border-light">Email</td>
+        <td class="bg-warning border-1 border-light">Course</td>
+        <td class="bg-warning border-1 border-light">Admission Date</td>
+        <td class="bg-warning border-1 border-light"></td>
+        <td class="bg-warning border-1 border-light"></td>
     </tr>
 
     @foreach (var student in Model)
@@ -28,11 +28,11 @@
             <td>@student.FirstName.Substring(0,1).Trim().ToLower()@student.LastName.Replace(" ","").ToLower()@domain </td>
             <td>@student.Course</td>
             <td>@student.AdmissionDate</td>
-            <td><a asp-action="ShowDetail" asp-route-id="@student.Id">Show Details</a></td>
-            <td><a asp-action="EditDetail" asp-controller="Student" asp-route-id="@student.Id">Edit Details</a></td>
+            <td><a asp-action="ShowDetail" asp-route-id="@student.Id"><button class="bg-danger text-light border-1 rounded-3">Show Details</button></a></td>
+            <td><a asp-action="EditDetail" asp-controller="Student" asp-route-id="@student.Id"><button class="bg-danger text-light border-1 rounded-3">Edit Details</button></a></td>
         </tr>
 
     }
 </table>
 
-<button><a asp-action="AddStudent" asp-controller="Student">Add Student</a></button>
+<a asp-action="AddStudent" asp-controller="Student"><button class="bg-danger text-light border-1 rounded-3">Add Student</button></a>

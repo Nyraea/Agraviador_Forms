@@ -1,7 +1,7 @@
-﻿@model Student;
+﻿@model Instructor;
 
-<h1>Add Student</h1>
-<form asp-action="AddStudent" method="post">
+<h1>Add Instructor</h1>
+<form asp-action="AddInstructor" method="post">
 	<div class="form-group">
 		<label asp-for="Id">ID</label>
 		<input asp-for="Id" class="form-control" />
@@ -15,12 +15,16 @@
 		<input asp-for="LastName" class="form-control" />
 	</div>
 	<div class="form-group">
-		<label asp-for="Course">Course</label>
-		<select asp-for="Course" asp-items="Html.GetEnumSelectList(typeof(Course))" class="form-control"></select>
+		<label asp-for="Status">Status</label>
+		<select asp-for="Status" asp-items="Html.GetEnumSelectList(typeof(Status))" class="form-control"></select>
 	</div>
 	<div class="form-group">
-		<label asp-for="AdmissionDate">Date Enrolled</label>
-		<input asp-for="AdmissionDate" class="form-control" />
+		<label asp-for="SalaryPerHour">Salary Per Hour</label>
+		<input asp-for="SalaryPerHour" class="form-control"></input>
+	</div>
+	<div class="form-group">
+		<label asp-for="Birthday">Birthday</label>
+		<input asp-for="Birthday" class="form-control" />
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 	<a asp-action="Index">Cancel</a>
