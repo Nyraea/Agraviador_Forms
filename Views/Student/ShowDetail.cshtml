@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Student;
+
+<h1>Student Details</h1>
+
+@{
+    double SemestralGrade = (@Model.PrelimGrade + @Model.FinalGrade) / 2;
+    string TransmutedGrade = "";
+}
+
+<table class="table table-dark">
+    <tr>
+        <th>Name</th>
+        <td>@Model.FirstName @Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Prelim Grade</th>
+        <td>@Model.PrelimGrade</td>
+    </tr>
+    <tr>
+        <th>Final Grade</th>
+        <td>@Model.FinalGrade</td>
+    </tr>
+    <tr>
+        <th>Semestral Grade</th>
+        <td>@SemestralGrade</td>
+    </tr>
+    <tr>
+        <th>Transmuted Grade</th>
+        @{
+            if (SemestralGrade >= 96)
+            {
+                TransmutedGrade = "1.00";
+            }
+            else if (SemestralGrade < 96 && SemestralGrade >= 94)
+            {
+                TransmutedGrade = "1.25";
+            }
+            else if (SemestralGrade < 94 && SemestralGrade >= 92)
+            {
+                TransmutedGrade = "1.50";
+            }
+            else if (SemestralGrade < 92 && SemestralGrade >= 89)
+            {
+                TransmutedGrade = "1.75";
+            }
+            else if (SemestralGrade < 89 && SemestralGrade >= 87)
+            {
+                TransmutedGrade = "2.00";
+            }
+            else if (SemestralGrade < 87 && SemestralGrade >= 84)
+            {
+                TransmutedGrade = "2.25";
+            }
+            else if (SemestralGrade < 84 && SemestralGrade >= 82)
+            {
+                TransmutedGrade = "2.50";
+            }
+            else if (SemestralGrade < 82 && SemestralGrade >= 79)
+            {
+                TransmutedGrade = "2.75";
+            }
+            else if (SemestralGrade < 79 && SemestralGrade >= 75)
+            {
+                TransmutedGrade = "3.00";
+            }
+            else if (SemestralGrade < 75)
+            {
+                TransmutedGrade = "5.00";
+            }
+        }
+        <td>@TransmutedGrade</td>
+    </tr>
+</table>
+<a asp-action="Index" asp-route-id="@Model.Id">Return</a>
