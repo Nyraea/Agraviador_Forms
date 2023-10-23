@@ -1,0 +1,39 @@
+﻿@model Student;
+
+<h1>Delete Student</h1>
+<form asp-action="Delete" method="post">
+	<div class="form-group">
+		<label asp-for="Id">ID</label>
+		<input asp-for="Id" class="form-control" readonly />
+	</div>
+	<div class="form-group">
+		<label asp-for="FirstName">First Name</label>
+		<input asp-for="FirstName" class="form-control" readonly />
+	</div>
+	<div class="form-group">
+		<label asp-for="LastName">Last Name</label>
+		<input asp-for="LastName" class="form-control" readonly />
+	</div>
+	<div class="form-group">
+		<label asp-for="Course">Course</label>
+		<select asp-for="Course" asp-items="Html.GetEnumSelectList(typeof(Course))" class="form-control" disabled="true"></select>
+	</div>
+	<div class="form-group">
+		<label asp-for="AdmissionDate">Date Enrolled</label>
+		<input asp-for="AdmissionDate" class="form-control" readonly />
+	</div>
+	<div class="popup bg-danger text-light border-1 rounded px-2 py-1 mx-2" onclick="myFunction()">
+		Delete
+		<span class="popuptext" id="myPopup">
+			
+			<h6>ARE YOU SURE YOU WANT TO DELETE THIS RECORD?</h6>
+			<button type="submit" class="btn btn-danger">Delete</button></span>
+	</div>
+	<a asp-action="Index">Cancel</a>
+</form>
+<script>
+	function myFunction() {
+		var popup = document.getElementById("myPopup");
+		popup.classList.toggle("show");
+	}
+</script>

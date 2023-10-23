@@ -1,31 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Agraviador_Forms.Models;
+using Agraviador_Forms.Services;
+using Agraviador_Forms.Data;
 
 namespace Agraviador_Forms.Controllers
 {
     public class InstructorController : Controller
     {
-        List<Instructor> InstructorList = new List<Instructor>
-            {
-                new Instructor()
-                {
-                    FirstName = "Tyrone",LastName = "Tiaga",  Birthday = DateTime.Parse("1992-01-04"), IsTenured = true, SalaryPerHour = 1200, Id = 1
-                },
-                new Instructor()
-                {
-                    FirstName = "Johann",LastName = "Yee",  Birthday = DateTime.Parse("1994-08-26"), IsTenured = true, SalaryPerHour = 1200, Id = 2
-                }
-            };
+        private readonly AppDbContext _dbContext;
+
+        public InstructorController(AppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IActionResult Index()
         {
 
-            return View(InstructorList);
+            return View(_dbContext.Instructors);
         }
 
         public IActionResult ShowDetail(int id)
         {
             //Search for the student whose id matches the given id
-            Instructor? instructor = InstructorList.FirstOrDefault(st => st.Id == id);
+            Instructor? instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == id);
 
             if (instructor != null)//was an student found?
                 return View(instructor);
@@ -43,15 +40,16 @@ namespace Agraviador_Forms.Controllers
 
         public IActionResult AddInstructor(Instructor newInstructor)
         {
-            InstructorList.Add(newInstructor);
-            return View("Index", InstructorList);
+            _dbContext.Instructors.Add(newInstructor);
+            _dbContext.SaveChanges();          
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult EditDetail(int id)
         {
             //Search for the student whose id matches the given id
-            Instructor? instructor = InstructorList.FirstOrDefault(st => st.Id == id);
+            Instructor? instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == id);
 
             if (instructor != null)//was an student found?
                 return View(instructor);
@@ -63,7 +61,7 @@ namespace Agraviador_Forms.Controllers
         [HttpPost]
         public IActionResult EditDetail(Instructor instructorChange)
         {
-            Instructor? instructor = InstructorList.FirstOrDefault(st => st.Id == instructorChange.Id);
+            Instructor? instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == instructorChange.Id);
 
             if (instructor != null)
             {
@@ -75,7 +73,8 @@ namespace Agraviador_Forms.Controllers
                 instructor.Birthday = instructorChange.Birthday;
                 instructor.SalaryPerHour = instructorChange.SalaryPerHour;
             }
-            return View("Index", InstructorList);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }
