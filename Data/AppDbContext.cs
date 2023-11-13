@@ -1,9 +1,10 @@
 ﻿using Agraviador_Forms.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Agraviador_Forms.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
