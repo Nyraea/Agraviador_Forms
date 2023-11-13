@@ -40,9 +40,16 @@ namespace Agraviador_Forms.Controllers
 
         public IActionResult AddInstructor(Instructor newInstructor)
         {
-            _dbContext.Instructors.Add(newInstructor);
-            _dbContext.SaveChanges();          
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                _dbContext.Instructors.Add(newInstructor);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpGet]
@@ -61,20 +68,27 @@ namespace Agraviador_Forms.Controllers
         [HttpPost]
         public IActionResult EditDetail(Instructor instructorChange)
         {
-            Instructor? instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == instructorChange.Id);
-
-            if (instructor != null)
+            if (!ModelState.IsValid)
             {
-                instructor.Id = instructorChange.Id;
-                instructor.FirstName = instructorChange.FirstName;
-                instructor.LastName = instructorChange.LastName;
-                instructor.Email = instructorChange.Email;
-                instructor.Status = instructorChange.Status;
-                instructor.Birthday = instructorChange.Birthday;
-                instructor.SalaryPerHour = instructorChange.SalaryPerHour;
+                return View();
             }
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            else
+            {
+                Instructor? instructor = _dbContext.Instructors.FirstOrDefault(st => st.Id == instructorChange.Id);
+
+                if (instructor != null)
+                {
+                    instructor.Id = instructorChange.Id;
+                    instructor.FirstName = instructorChange.FirstName;
+                    instructor.LastName = instructorChange.LastName;
+                    instructor.Email = instructorChange.Email;
+                    instructor.Rank = instructorChange.Rank;
+                    instructor.HiringDate = instructorChange.HiringDate;
+                    instructor.SalaryPerHour = instructorChange.SalaryPerHour;
+                }
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
     }

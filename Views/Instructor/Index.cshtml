@@ -13,7 +13,9 @@
     <tr>
         <td class="bg-primary border-1 border-light">Name</td>
         <td class="bg-warning border-1 border-light">Email</td>
-        <td class="bg-warning border-1 border-light">Status</td>
+        <td class="bg-warning border-1 border-light">Rank</td>
+        <td class="bg-warning border-1 border-light">Phone Number</td>
+        <td class="bg-warning border-1 border-light">Personal URL</td>
         <td class="bg-warning border-1 border-light">Daily Salary</td>
         <td class="bg-warning border-1 border-light">Monthly Salary</td>
         <td class="bg-warning border-1 border-light"></td>
@@ -39,6 +41,8 @@
                     <td>Probationary</td>
                 }
             }
+            <td>@instructor.PhoneNumber</td>
+            <td>@instructor.PersonalURL</td>
             <td>@SalaryPerDay</td>
             <td>@SalaryPerMonth</td>
             <td><a asp-action="ShowDetail" asp-route-id="@instructor.Id"><button class ="bg-danger text-light border-1 rounded-3">Show Details</button></a></td>

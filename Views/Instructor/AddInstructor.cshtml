@@ -9,23 +9,41 @@
 	</div>
 	<div class="form-group">
 		<label asp-for="LastName">Last Name</label>
+		<span asp-validation-for="LastName"></span>
 		<input asp-for="LastName" class="form-control" />
 	</div>
 	<div class="form-group">
 		<label asp-for="Email">Email</label>
+		<span asp-validation-for="Email"></span>
 		<input asp-for="Email" class="form-control" />
 	</div>
 	<div class="form-group">
-		<label asp-for="Status">Status</label>
-		<select asp-for="Status" asp-items="Html.GetEnumSelectList(typeof(Status))" class="form-control"></select>
+		<label asp-for="UnusedPassword">Password</label>
+		<span asp-validation-for="UnusedPassword"></span>
+		<input asp-for="UnusedPassword" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="PhoneNumber">Phone Number</label>
+		<span asp-validation-for="PhoneNumber"></span>
+		<input asp-for="PhoneNumber" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="PersonalURL">Personal URL</label>
+		<span asp-validation-for="PersonalURL"></span>
+		<input asp-for="PersonalURL" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Rank">Rank</label>
+		<select asp-for="Rank" asp-items="Html.GetEnumSelectList(typeof(Ranks))" class="form-control"></select>
 	</div>
 	<div class="form-group">
 		<label asp-for="SalaryPerHour">Salary Per Hour</label>
 		<input asp-for="SalaryPerHour" class="form-control"></input>
 	</div>
 	<div class="form-group">
-		<label asp-for="Birthday">Birthday</label>
-		<input asp-for="Birthday" class="form-control" />
+		<label asp-for="HiringDate">Hiring Date</label>
+		<span asp-validation-for="HiringDate"></span>
+		<input asp-for="HiringDate" class="form-control" />
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 	<a asp-action="Index">Cancel</a>

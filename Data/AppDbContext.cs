@@ -21,9 +21,12 @@ namespace Agraviador_Forms.Data
                     FirstName = "Imran",
                     LastName = "Beltran",
                     Email = "imran.beltran.cics@ust.edu.ph",
+                    UnusedPassword = "password12",
                     IsTenured = true,
-                    Birthday = DateTime.Parse("2019-08-15"),
-                    Status = Status.Permanent
+                    HiringDate = DateTime.Parse("2019-08-15"),
+                    Rank = Ranks.Permanent,
+                    PhoneNumber = "932-126-2656",
+                    PersonalURL = "https://fontawesome.com/search?q=switch&o=r"
                 },
                 new Instructor()
                 {
@@ -31,9 +34,13 @@ namespace Agraviador_Forms.Data
                     FirstName = "Kiel",
                     LastName = "Tejada",
                     Email = "kiel.tejada.cics@ust.edu.ph",
+                    UnusedPassword = "password13",
                     IsTenured = true,
-                    Birthday = DateTime.Parse("2002-10-28"),
-                    Status = Status.Permanent
+                    HiringDate = DateTime.Parse("2002-10-28"),
+                    Rank = Ranks.Permanent,
+                    PhoneNumber = "932-126-2656",
+                    PersonalURL = "https://fontawesome.com/search?q=switch&o=r"
+
                 }
                 );
 
